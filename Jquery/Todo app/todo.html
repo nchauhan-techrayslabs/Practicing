@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo APP</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="../src/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4 max-w-screen-lg">
+        <h1 class="text-3xl font-bold text-center mb-6">TODO APP</h1>
+        <div class="flex mb-4">
+            <input id="taskinput" type="text" placeholder="Enter task" class="flex-1 p-2 border border-gray-300 rounded-l">
+            <button id="addtask" class="bg-blue-500 text-white px-4 py-2 rounded-r hover:bg-blue-600">Add Task</button>
+        </div>
+        <ul id="tasklist" class="space-y-2"></ul>
+    </div>
+
+  
+    <script src="todo.js"></script>
+</body>
+</html>
