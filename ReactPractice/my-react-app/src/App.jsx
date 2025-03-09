@@ -4,7 +4,7 @@ import videosData from "./Data/data"
 import AddVideo from "./Components/AddVideo";
 
 const App = () => {
-
+       const  [editable, seteditable] = useState("")
       const [videos, dispatch] = useReducer(VideoReducer, videosData)
  
        function VideoReducer(videos,action){
@@ -21,7 +21,9 @@ const App = () => {
                   const newvideo =[...videos]
                   newvideo.splice(index,1,action.payload)
                   return newvideo
-            default:return videos
+
+             default:
+                   return videos
           }
        }
 
@@ -31,38 +33,38 @@ const App = () => {
 
 
         // const [videos, setvideos] = useState(videosData)
-        const  [editable, seteditable] = useState("")
+      
         //add video
-        const addVideo = (video) => {
+        // const addVideo = (video) => {
           // const newVideo = {
           //   ...video, id: videos.length + 1
           // };
           // setvideos([...videos, newVideo]);
-        dispatch({type:'ADD',payload:video})
-        };
+        // dispatch({type:'ADD',payload:video})
+        // };
    
         //delete video
-          const deletevideo=(id)=>{
-            dispatch({type:'DELETE',payload:id})
-              //  setvideos( videos.filter(video=>(video.id!=id)))
+          // const deletevideo=(id)=>{
+          //   dispatch({type:'DELETE',payload:id})
+          //     //  setvideos( videos.filter(video=>(video.id!=id)))
                 
-          }
+          // }
        // edit video
        const editvideo =(id)=>{
         seteditable( videos.find(video =>video.id===id))
        }
-       const updatevideo =(video)=>{
-        dispatch({type:'UPDATE',payload:video})
+      //  const updatevideo =(video)=>{
+      //   dispatch({type:'UPDATE',payload:video})
       //  const index=  videos.findIndex( v=>v.id===video.id)
       //  const newvideo =[...videos]
       //  newvideo.splice(index,1,video)
       //  setvideos(newvideo)
-       }
+      //  }
   
-
+  // delted  props passed addvide0 delete updatevideo
   return (
     <div className="max-w-screen min-h-screen p-4">
-       <AddVideo addVideo={addVideo}  editable={editable} updatevideo={updatevideo} />
+       <AddVideo   dispatch={dispatch}     />                                      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
        
         {videos.map((video) => (
@@ -72,10 +74,11 @@ const App = () => {
             title={video.title} 
             views={video.views} 
             channel={video.channel} 
-            deletevideo={deletevideo}
+            dispatch={dispatch} 
             editvideo={editvideo}
           />
-        ))}
+        ))}                       
+      
       </div>
     </div>
   );

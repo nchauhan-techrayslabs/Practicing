@@ -9,7 +9,9 @@ const initial = {
     channel: "Wildlife HD",
 
 }
-const AddVideo = ({addVideo ,editable,updatevideo}) => {
+
+ //deleted props that are passed (addvideo,update)here and replaced with dispatch
+const AddVideo = ({ dispatch  ,editable}) => {           
 
    const [video,setvideo] =useState(initial)
 
@@ -24,10 +26,10 @@ const AddVideo = ({addVideo ,editable,updatevideo}) => {
 
     if (editable) {
 
-      updatevideo(video);
+      dispatch({type:'UPDATE',payload:video})
 
     } else {
-      addVideo(video);
+      dispatch({type:'ADD',payload:video})
     }
 
     setvideo(initial);

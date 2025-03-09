@@ -1,6 +1,6 @@
 import React from "react";
 
-const Vedio = ({ id, views, title, channel,deletevideo,editvideo }) => {
+const Vedio = ({ id, views, title, channel,dispatch,editvideo }) => {
   return (
     <div className="w-72 bg-white shadow-lg rounded-lg overflow-hidden">
       
@@ -10,7 +10,7 @@ const Vedio = ({ id, views, title, channel,deletevideo,editvideo }) => {
           src="https://placebear.com/320/180"
           alt="Bear"
         /> <button className="bg-black absolute right-10 top-1 px-2 py-1 text-sm rounded-md " onClick={()=>(editvideo(id))}>Edit</button>
-         <button className="bg-black absolute right-1 top-1 px-2 py-1 text-sm rounded-md" onClick={()=>deletevideo(id)} >X</button>
+         <button className="bg-black absolute right-1 top-1 px-2 py-1 text-sm rounded-md" onClick={ ()=> (dispatch({type:'DELETE',payload:id}))} >X</button>
       </div>
 
       
